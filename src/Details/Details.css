@@ -1,0 +1,9 @@
+.bookDetailsItem-Title{
+    text-align: left;
+}
+
+.bookDetailsItem-CommentsHeader{
+    text-align: right;
+    margin-bottom: 0.4em;
+    margin-right: 0.3em;
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
 import { IndexLinkContainer } from "react-router-bootstrap";
 import { Link } from 'react-router-dom';
 
@@ -19,15 +19,22 @@ class Header extends React.Component<any, any> {
             </Navbar.Header>
             <Navbar.Collapse>
                 <Nav>
+                    <IndexLinkContainer to="/">
+                        <NavItem eventKey={10}> 
+                            <Glyphicon glyph="glyphicon glyphicon-home" style={{fontSize: "1.5em"}}/>
+                        </NavItem>
+                    </IndexLinkContainer>
                     <IndexLinkContainer to="/AddBook">
-                        <NavItem eventKey={1}>ADD</NavItem>
+                        <NavItem eventKey={20}> 
+                            <Glyphicon glyph="glyphicon glyphicon-plus" style={{fontSize: "1.5em"}}/>
+                        </NavItem>
                     </IndexLinkContainer>
                 </Nav>
                 <Nav pullRight={true}>
-                    <NavItem className="headerIcon-github" eventKey={5} href="https://github.com/optmzer">
+                    <NavItem className="headerIcon-github" eventKey={50} href="https://github.com/optmzer">
                         GitHub
                     </NavItem>
-                    <NavItem className="headerIcon-twitter" eventKey={6} href="https://www.linkedin.com/in/alexander-frolov-324051148/">
+                    <NavItem className="headerIcon-twitter" eventKey={60} href="https://www.linkedin.com/in/alexander-frolov-324051148/">
                         LinkedIn
                     </NavItem>
                 </Nav>

@@ -49,8 +49,6 @@ class Home extends React.Component<any, any> {
         _bookService.getAllBooks()
         .then(
             (res) => {
-            // Put data into state log
-            console.log('L54 getAllBooks = ', res);
             this.setState({
                 books: res
             });
