@@ -3,6 +3,7 @@
  */
 declare module 'dotenv';
 
+declare module 'applicationinsights-js'
 /**
  * Contains data of image search result from Pexel
  */
