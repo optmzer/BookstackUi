@@ -1,0 +1,41 @@
+/* .bookListItem-Title{
+
+}
+
+.bookListItem-review{
+
+} */
+
+
+
+.bookListItem-Panel{
+    text-align: left;
+}
+
+.bookListItem-editTools{
+    text-align: center;
+}
+
+.glyphicon-edit{
+    margin-top: 1em;
+}
+.glyphicon-trash{
+    margin-top: 1em;
+}
+
+.bookListItem-editTools{
+    padding-top: 1em;
+}
+
+@media only screen and (max-width: 768px) {
+    .glyphicon-edit{
+        margin-top: 0;
+    }
+    .glyphicon-trash{
+        margin-top: 0;
+    }
+
+    .bookListItem-editTools{
+        padding-top: 0;
+    }
+}  

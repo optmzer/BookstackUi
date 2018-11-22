@@ -10,10 +10,16 @@ import Home from '../Home/Home';
 
 export const Router: React.StatelessComponent<{}> = () => {
     
-    function RoutToDetails(props: any){
-        console.log("L14 Router props => ", props);
-        
+    function RouteToDetails(props: any){
         return <Details bookId={props.match.params.bookId}/>
+    };
+
+    function RouteToEditBook(props: any){
+        return <EditBook bookId={props.match.params.bookId}/>
+    };
+
+    function RouteToDeleteBook(props: any){
+        return <DeleteBook bookId={props.match.params.bookId}/>
     };
 
     return (
@@ -23,10 +29,16 @@ export const Router: React.StatelessComponent<{}> = () => {
                 <Route exact={true} path="/" component={Home} />
                 <Route 
                     exact={true} path="/Details/:bookId" 
-                    component={RoutToDetails} />
-                <Route path="/AddBook" component={AddBook} />
-                <Route path="/EditBook" component={EditBook} />
-                <Route path="/DeleteBook" component={DeleteBook} />
+                    component={RouteToDetails} />
+                <Route 
+                    path="/AddBook" 
+                    component={AddBook} />
+                <Route 
+                    path="/EditBook/:bookId" 
+                    component={RouteToEditBook} />
+                <Route 
+                    path="/DeleteBook/:bookId" 
+                    component={RouteToDeleteBook} />
                 <Redirect from='*' to='/' />
             </Switch>
             <Footer />

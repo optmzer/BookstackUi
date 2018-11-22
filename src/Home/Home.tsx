@@ -2,7 +2,6 @@
 // import { NearMe } from "@material-ui/icons";
 import * as React from "react";
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import BookListItem from 'src/BookListItem/BookListItem';
 import * as _bookService from 'src/Services/BookService';
 
@@ -23,7 +22,6 @@ class Home extends React.Component<any, any> {
 
         return(
             <div>
-                <p>Basic Home Page It will have a list of tiles</p>
                 {
                     books.size === 0
                     ?
@@ -35,13 +33,8 @@ class Home extends React.Component<any, any> {
                                 (book: any, index: number) => {
                                     return (
                                         <ListGroupItem key={book.id}>
-                                        <Link
-                                            to={`/Details/${book.id}`}
-                                            title="Open Book Post"
-                                        >
-                                                <BookListItem bookId={book.id} />
-                                        </Link>
-                                            </ListGroupItem>
+                                            <BookListItem book={book} />
+                                        </ListGroupItem>
                                     );
                                 }
                             )
