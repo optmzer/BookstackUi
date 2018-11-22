@@ -1,9 +1,8 @@
-// import { Button, ButtonBase, CircularProgress, Grid, Paper, Typography } from "@material-ui/core";
-// import { NearMe } from "@material-ui/icons";
 import * as React from "react";
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Col, Glyphicon, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 import BookListItem from 'src/BookListItem/BookListItem';
 import * as _bookService from 'src/Services/BookService';
+import './Home.css';
 
 class Home extends React.Component<any, any> {
     constructor(props: any) {
@@ -25,7 +24,18 @@ class Home extends React.Component<any, any> {
                 {
                     books.size === 0
                     ?
-                    <div>SHOW LOADER</div>
+                    <ListGroup>
+                        <ListGroupItem key={1}>
+                            <Row>
+                                <Col sm={12}>
+                                    <Glyphicon glyph="glyphicon glyphicon-cog handmade-spinner"/>
+                                </Col>
+                                <Col sm={12}>
+                                    LOADING...
+                                </Col>
+                            </Row>    
+                        </ListGroupItem>
+                    </ListGroup>
                     :
                     <ListGroup>
                         {

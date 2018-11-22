@@ -7,23 +7,28 @@ const headers: Headers = new Headers({
     "Content-Type": "text/plain; charset=utf-8",
   });
 
-export function getAllBooks(): Promise<any> {
-  return fetch(BOOKS_URI, {
+export async function getAllBooks(): Promise<any> {
+  const res = await fetch(BOOKS_URI, {
     headers,
     method: "GET",
-  })
-  .then(
-    (res) => res.json(), // Have to have this in order to get to the body.
-  );
+  });
+  return res.json();
 }
 
-export function getBookById(bookId: number): Promise<any> {
+export async function getBookById(bookId: number): Promise<any> {
   const BOOKS_URI_BY_ID = BOOKS_URI + "/" + bookId
-  return fetch(BOOKS_URI_BY_ID, {
+  const res = await fetch(BOOKS_URI_BY_ID, {
     headers,
     method: "GET",
-  })
-  .then(
-    (res) => res.json(), // Have to have this in order to get to the body.
-  );
+  });
+  return res.json();
+}
+
+export async function submitBook(bookId: number): Promise<any> {
+  const BOOKS_URI_BY_ID = BOOKS_URI
+  const res = await fetch(BOOKS_URI_BY_ID, {
+    headers,
+    method: "POST",
+  });
+  return res.json();
 }

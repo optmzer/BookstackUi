@@ -14,16 +14,16 @@ interface IPexelImg {
   }
 
 declare interface IBook {
-  author: string,
-  bookReview: number,
-  bookTags: Array<{}>,
-  coverUrl: string,
-  created: Date,
   id: number,
-  isbn: string,
-  listComments: Array<{}>,
+  created: Date,
   title: string,
-  yearPublished: number
+  author: string,
+  yearPublished: number,
+  isbn: string,
+  bookReview: number,
+  coverUrl: string,
+  bookTags: Array<{}>,
+  listComments: Array<{}>
 }
 
 /**

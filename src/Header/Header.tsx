@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
 import { IndexLinkContainer } from "react-router-bootstrap";
 import { Link } from 'react-router-dom';
+import './Header.css'
 
 class Header extends React.Component<any, any> {
     constructor(props: any) {
@@ -21,20 +22,20 @@ class Header extends React.Component<any, any> {
                 <Nav>
                     <IndexLinkContainer to="/">
                         <NavItem eventKey={10}> 
-                            <Glyphicon glyph="glyphicon glyphicon-home" style={{fontSize: "1.5em"}}/>
+                            <Glyphicon glyph="glyphicon glyphicon-home header-controls" style={{fontSize: "1.4em"}}/>
                         </NavItem>
                     </IndexLinkContainer>
                     <IndexLinkContainer to="/AddBook">
                         <NavItem eventKey={20}> 
-                            <Glyphicon glyph="glyphicon glyphicon-plus" style={{fontSize: "1.5em"}}/>
+                            <Glyphicon glyph="glyphicon glyphicon-plus header-controls" style={{fontSize: "1.4em"}}/>
                         </NavItem>
                     </IndexLinkContainer>
                 </Nav>
                 <Nav pullRight={true}>
-                    <NavItem className="headerIcon-github" eventKey={50} href="https://github.com/optmzer">
+                    <NavItem className="headerIcon-github" eventKey={50} href="https://github.com/optmzer" target="_blank">
                         GitHub
                     </NavItem>
-                    <NavItem className="headerIcon-twitter" eventKey={60} href="https://www.linkedin.com/in/alexander-frolov-324051148/">
+                    <NavItem className="headerIcon-twitter" eventKey={60} href="https://www.linkedin.com/in/alexander-frolov-324051148/" target="_blank">
                         LinkedIn
                     </NavItem>
                 </Nav>
