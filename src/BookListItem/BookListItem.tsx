@@ -1,7 +1,5 @@
-// import { Button, ButtonBase, CircularProgress, Grid, Paper, Typography } from "@material-ui/core";
-// import { NearMe } from "@material-ui/icons";
 import * as React from "react";
-import { Col, Glyphicon, Grid, Panel, Row } from 'react-bootstrap';
+import { Badge, Col, Glyphicon, Grid, Panel, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './BookListItem.css';
 
@@ -36,6 +34,9 @@ class BookListItem extends React.Component<any, any> {
                                         <Col xs={10} sm={9} md={9} lg={10}>
                                             <Panel.Title className="bookListItem-Title" componentClass="h3">{book.title}</Panel.Title>
                                             <Panel.Title className="bookListItem-Title" componentClass="h4">{book.author}</Panel.Title>
+                                        </Col>
+                                        <Col xs={1} sm={1} md={1} lg={1}>
+                                            Rating: <Badge>{book.bookRating}</Badge>
                                         </Col>
                                     </Row>
                                 </Panel.Heading>
