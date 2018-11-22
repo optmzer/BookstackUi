@@ -9,12 +9,21 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 
 export const Router: React.StatelessComponent<{}> = () => {
+    
+    function RoutToDetails(props: any){
+        console.log("L14 Router props => ", props);
+        
+        return <Details bookId={props.match.params.bookId}/>
+    };
+
     return (
         <div id="router">
             <Header />
             <Switch>
                 <Route exact={true} path="/" component={Home} />
-                <Route path="/Details" component={Details} />
+                <Route 
+                    exact={true} path="/Details/:bookId" 
+                    component={RoutToDetails} />
                 <Route path="/AddBook" component={AddBook} />
                 <Route path="/EditBook" component={EditBook} />
                 <Route path="/DeleteBook" component={DeleteBook} />

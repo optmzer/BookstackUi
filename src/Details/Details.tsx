@@ -10,8 +10,10 @@ class Details extends React.Component<any, any> {
     }
 
     public render() {
+        const {bookId} = this.props
         return(
             <div>
+                <p>Book Id From Props = {bookId}</p>
                 <p>Basic Book Details Page</p>
             </div>
         ); // return()
