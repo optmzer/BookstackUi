@@ -61,3 +61,12 @@ export async function deleteBook(bookId: number): Promise<any> {
   });
   return res.json();
 }
+
+export async function getBookByTitle(title: string): Promise<any> {
+  const BOOKS_URI_BY_TITLE = BOOKS_URI + "/Search/" + title
+  const res = await fetch(BOOKS_URI_BY_TITLE, {
+    headers,
+    method: "GET",
+  });
+  return res.json();
+}

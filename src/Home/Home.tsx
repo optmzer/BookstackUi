@@ -8,69 +8,48 @@ class Home extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            books: [],
             error_msg: ""
         }
-        this.getAllBooks();
     }
 
     public render() {
-        console.log("L35 this.state.books = ", this.state.books);
+        console.log("L49 Home this.props.books = ", this.props.books);
         
-        const {books} = this.state
+        const {books} = this.props
 
-        return(
-            <div>
-                {
-                    books.size === 0
-                    ?
-                    <ListGroup>
-                        <ListGroupItem key={1}>
-                            <Row>
-                                <Col sm={12}>
-                                    <Glyphicon glyph="glyphicon glyphicon-cog handmade-spinner"/>
-                                </Col>
-                                <Col sm={12}>
-                                    LOADING...
-                                </Col>
-                            </Row>    
-                        </ListGroupItem>
-                    </ListGroup>
-                    :
-                    <ListGroup>
-                        {
-                            books.map(
-                                (book: any, index: number) => {
-                                    return (
-                                        <ListGroupItem key={book.id}>
-                                            <BookListItem book={book} />
-                                        </ListGroupItem>
-                                    );
-                                }
-                            )
-                        }
-                    </ListGroup>
-                }
-            </div>
-        ); // return()
+        if(books){
+            return(
+                <ListGroup>
+                    {
+                        books.map(
+                            (book: any, index: number) => {
+                                return (
+                                    <ListGroupItem key={book.id}>
+                                        <BookListItem book={book} />
+                                    </ListGroupItem>
+                                );
+                            }
+                        )
+                    }
+                </ListGroup>
+            )
+        }else {
+            return(
+                <ListGroup>
+                    <ListGroupItem key={1}>
+                        <Row>
+                            <Col sm={12}>
+                                <Glyphicon glyph="glyphicon glyphicon-cog handmade-spinner"/>
+                            </Col>
+                            <Col sm={12}>
+                                LOADING...
+                            </Col>
+                        </Row>    
+                    </ListGroupItem>
+                </ListGroup>
+            ); // return()
+        }
     } // render()
-
-    public getAllBooks = () => {
-        _bookService.getAllBooks()
-        .then(
-            (res) => {
-            this.setState({
-                books: res
-            });
-          })
-          .catch(
-            (err) => {
-              this.setState({
-                error_msg: err.message,
-              });
-            },
-          );
-    }
 }// class
 
 export default Home;
