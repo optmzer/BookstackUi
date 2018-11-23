@@ -1,4 +1,15 @@
 .header-controls{
     padding: 0;
     margin: 0 0.5em 0 0.5em;
+    min-height: 38px;
+}
+
+g.social-svg-mask>path{
+    color: #9d9d9d;
+    fill:  #9d9d9d;
+}
+
+g.social-svg-mask>path:hover{
+    color: #9d9d9d;
+    fill: #ffffff;
 }

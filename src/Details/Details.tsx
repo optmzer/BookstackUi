@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Badge, Col, ListGroup, ListGroupItem, Panel, Row } from 'react-bootstrap';
+import { Badge, Col, ListGroup, ListGroupItem, Nav, NavItem, Panel, Row } from 'react-bootstrap';
+import { FacebookIcon, FacebookShareButton, GooglePlusIcon, GooglePlusShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton } from 'react-share';
 import CommentListItem from 'src/CommentListItem/CommentListItem';
 import * as _bookService from 'src/Services/BookService';
-import './Details.css'
+import './Details.css';
 
 class Details extends React.Component<any, any> {
     constructor(props: any) {
@@ -32,17 +33,19 @@ class Details extends React.Component<any, any> {
     }
 
     public render() {
-
+        const {bookUlr} = this.props
         const {book} = this.state
-        console.log("L35 Details this.props = ", this.state);
+        // console.log("L35 Details this.props = ", this.state);
         
+        const shareUrl = _bookService.BOOKS_UI_URI + bookUlr
+
         if(book){
             return(
                 <Panel>
                     <Panel.Heading>
                         <Row>
                             <Col xs={10} sm={9} md={9} lg={10}>
-                                <Panel.Title className="bookDetailsItem-Title" componentClass="h3">{book.title}</Panel.Title>
+                                <Panel.Title className="bookDetailsItem-Title" componentClass="h2">{book.title}</Panel.Title>
                             </Col>
                         </Row>
                     </Panel.Heading>
@@ -58,9 +61,37 @@ class Details extends React.Component<any, any> {
                                 Rating: <Badge>{book.bookRating}</Badge>
                             </Col>
                         </Row>
+                        <Row>
+                            <Col sm={12}>
+                                <Panel.Title className="bookDetailsItem-Title" componentClass="h6"><b><i>Share this book</i></b></Panel.Title>
+                            </Col>
+                        </Row>
+                        <Row className="social-media-share-buttons button">
+                            <Nav bsStyle="pills">
+                                <NavItem key={1}>
+                                    <FacebookShareButton url={shareUrl}>
+                                        <FacebookIcon size={32} round={false}/>
+                                    </FacebookShareButton>
+                                </NavItem>
+                                <NavItem key={2}>
+                                    <GooglePlusShareButton url={shareUrl}>
+                                        <GooglePlusIcon size={32} round={false}/>
+                                    </GooglePlusShareButton>
+                                </NavItem>
+                                <NavItem key={3}>
+                                    <LinkedinShareButton url={shareUrl}>
+                                        <LinkedinIcon size={32} round={false}/>
+                                    </LinkedinShareButton>
+                                </NavItem>
+                                <NavItem key={4}>
+                                    <TwitterShareButton url={shareUrl}>
+                                        <TwitterIcon size={32} round={false}/>
+                                    </TwitterShareButton>
+                                </NavItem>
+                            </Nav>
+                        </Row>
                     </Panel.Heading>
                     <Panel.Body>{book.bookReview}</Panel.Body>
-                    
                     <Panel.Footer>
                     <Panel.Title className="bookDetailsItem-CommentsHeader" componentClass="h3">Comments</Panel.Title>
                         <ListGroup>

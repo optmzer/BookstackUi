@@ -1,16 +1,97 @@
 import * as React from "react";
 import { Button, Col, ControlLabel, Form, FormControl, FormGroup, InputGroup } from 'react-bootstrap';
+import * as _bookService from '../Services/BookService';
 import './AddBook.css';
 
 class AddBook extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
+        this.state = {
+            uploadFileList: null
+        }
+    }
+
+    // Gets file from form input
+    public handleFileUpload = (fileList: any) => {
+        this.setState({
+            uploadFileList: fileList.target.files
+        })
+    }// handleFileUpload()
+
+/**
+ * curl -X POST "https://bookstakapi.azurewebsites.net/api/Books/upload" -H  "accept: application/json" -H  "Content-Type: multipart/form-data" 
+ * -F "Title=Title" 
+ * -F "Author=Author" 
+ * -F "YearPublished=2001" 
+ * -F "ISBN=123456789" 
+ * -F "BookReview=Awesome bookReview" 
+ * -F "BookRating=5" 
+ * -F "tags=science, web" 
+ * -F "Image=@HTML CSS.jpg;type=image/jpeg"
+ */
+
+    public handleFormSubmit = (event: any) => {
+        event.preventDefault()
+        // console.log("L36 Form Event", event.target);
+        
+        const titleInput = document.getElementById("formHorizontalTitle") as HTMLInputElement
+        const authorInput = document.getElementById("formHorizontalAuthor") as HTMLInputElement
+        const yearPublishedInput = document.getElementById("formHorizontalYear") as HTMLInputElement
+        const isbnInput = document.getElementById("formHorizontalISBN") as HTMLInputElement
+		const tagsInput = document.getElementById("formHorizontalTags") as HTMLInputElement
+        const ratigsInput = document.getElementById("formHorizontalRatings") as HTMLInputElement
+        const reviewInput = document.getElementById("formControlsReview") as HTMLInputElement
+        const imageFile = this.state.uploadFileList[0]
+
+        if(titleInput === null 
+            || authorInput === null
+            || yearPublishedInput === null
+            || isbnInput === null
+            || tagsInput === null
+            || ratigsInput === null
+            || reviewInput === null
+            || imageFile === null ) {
+                return
+            };
+
+        const title = titleInput.value  
+        const author = authorInput.value 
+        const year = yearPublishedInput.value 
+        const isbn = isbnInput.value 
+        const tags = tagsInput.value 
+        const ratings = ratigsInput.value 
+        const review = reviewInput.value 
+
+        // Create form datat to send to API
+        const formData = new FormData()
+        formData.append("Title", title)
+        formData.append("Author", author)
+        formData.append("YearPublished", year)
+        formData.append("ISBN", isbn)
+        formData.append("BookReview", review)
+        formData.append("BookRating", ratings)
+        formData.append("tags", tags)
+        formData.append("Image", imageFile)
+        
+        _bookService.submitBook(formData)
+        .then((response: any) => {
+            console.log("L80 AddBook Responce = ", response);
+			if(!response.ok){
+				// Rise an error
+				alert(response.statusText)
+			}else{
+                // location.reload()
+                
+                // location.replace("/Details/" + response.id)
+			}
+		})
+        // then redirect to /Details/:bookId
     }
 
     public render() {
         return(
             <div>
-                <Form horizontal={true}>
+                <Form horizontal={true} onSubmit={this.handleFormSubmit}>
                     <FormGroup controlId="formHorizontalTitle" >
                         <Col componentClass={ControlLabel} sm={2}>
                             Title
@@ -43,6 +124,15 @@ class AddBook extends React.Component<any, any> {
                             <FormControl type="text" placeholder="ISBN" required={true}/>
                         </Col>
                     </FormGroup>
+                    
+                    <FormGroup controlId="formHorizontalRatings" >
+                        <Col componentClass={ControlLabel} sm={2}>
+                            Rating
+                        </Col>
+                        <Col sm={9}>
+                            <FormControl type="text" placeholder="Book Ratings" required={true}/>
+                        </Col>
+                    </FormGroup>
                     <FormGroup controlId="formHorizontalTags" >
                         <Col componentClass={ControlLabel} sm={2}>
                             Tags
@@ -51,7 +141,6 @@ class AddBook extends React.Component<any, any> {
                             <FormControl type="text" placeholder="Tags Comma Separated" required={true}/>
                         </Col>
                     </FormGroup>
-                    
                     <FormGroup controlId="formControlsReview">
                         <Col componentClass={ControlLabel} sm={2}>
                             Review
@@ -66,13 +155,19 @@ class AddBook extends React.Component<any, any> {
                         </Col>
                         <Col sm={9}>
                             <InputGroup>
-                                <InputGroup.Addon><FormControl type="file" required={true} /></InputGroup.Addon>
+                                <InputGroup.Addon>
+                                    <FormControl 
+                                        type="file" 
+                                        required={true}
+                                        onChange={this.handleFileUpload}
+                                    />
+                                </InputGroup.Addon>
                             </InputGroup>
                         </Col>
                     </FormGroup>
                     <FormGroup>
                         <Col smOffset={2} sm={9} className="addBook-submit">
-                            <Button type="submit">Submit</Button>
+                            <Button type="submit" >Submit</Button>
                         </Col>
                     </FormGroup>
                 </Form>

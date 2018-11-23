@@ -1,0 +1,19 @@
+.handmade-spinner {
+    animation: handmade-spinner-spin infinite 3s linear;
+    font-size: 3em;
+}
+  
+@keyframes handmade-spinner-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.delete-form-static-text{
+    text-align: left;
+}
+
+@media only screen and (max-width: 768px) {
+    .delete-form-static-text{
+        text-align: center;
+    }
+}  

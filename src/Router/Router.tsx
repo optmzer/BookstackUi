@@ -11,7 +11,11 @@ import Home from '../Home/Home';
 export const Router: React.StatelessComponent<{}> = () => {
     
     function RouteToDetails(props: any){
-        return <Details bookId={props.match.params.bookId}/>
+        // console.log("L14 Router props.match = ", props.match);
+        return <Details 
+                    bookUrl={props.match.url}
+                    bookId={props.match.params.bookId
+                }/>
     };
 
     function RouteToEditBook(props: any){

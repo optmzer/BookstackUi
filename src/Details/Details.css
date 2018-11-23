@@ -7,3 +7,11 @@
     margin-bottom: 0.4em;
     margin-right: 0.3em;
 }
+
+.social-media-share-buttons button{
+    width: 1em;
+}
+/* Social media buttons under 'Share this book' */
+.nav > li > a{
+    padding: 5px 5px;
+}

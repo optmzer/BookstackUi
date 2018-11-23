@@ -2,16 +2,19 @@
  * Import env variables from .env file.
  */
 declare module 'dotenv';
-
-declare module 'applicationinsights-js'
 /**
- * Contains data of image search result from Pexel
+ * Azure Application Insights for Web page
  */
-interface IPexelImg {
-  photographer: string,
-  src: string,
-  url: string,
-  }
+declare module 'applicationinsights-js';
+/**
+ * React Social Media Share buttons -> Share on Twitter
+ */
+declare module 'react-share'
+/**
+ * React social media Icons That did not make it to react-share
+ */
+declare module 'react-social-icons';
+
 
 declare interface IBook {
   id: number,
