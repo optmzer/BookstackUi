@@ -30,7 +30,7 @@ class Header extends React.Component<any, any> {
 
         const { books, searchQuery } = this.state
         console.log("26 Header. render this.state.books = ", books);
-        console.log("27 Header. render this.state.value = ", searchQuery);
+        // console.log("27 Header. render this.state.value = ", searchQuery);
         
         return(
         <Navbar inverse={true} collapseOnSelect={false}  >

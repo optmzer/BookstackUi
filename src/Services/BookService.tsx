@@ -3,7 +3,7 @@
 
 
 export const BOOKS_URI = 'https://bookstakapi.azurewebsites.net/api/Books'
-export const BOOKS_UI_URI = 'http://localhost:3000'
+export const BOOKS_UI_URI = 'https://bookstakui.azurewebsites.net'
 
 const headers: Headers = new Headers({
     "Content-Type": "text/plain; charset=utf-8",

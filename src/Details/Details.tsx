@@ -33,11 +33,11 @@ class Details extends React.Component<any, any> {
     }
 
     public render() {
-        const {bookUlr} = this.props
+        const {bookUrl} = this.props
         const {book} = this.state
-        // console.log("L35 Details this.props = ", this.state);
+        console.log("L35 Details this.props = ", bookUrl);
         
-        const shareUrl = _bookService.BOOKS_UI_URI + bookUlr
+        const shareUrl = _bookService.BOOKS_UI_URI + bookUrl
 
         if(book){
             return(

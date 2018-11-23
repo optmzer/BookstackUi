@@ -13,7 +13,7 @@ class Home extends React.Component<any, any> {
     }
 
     public render() {
-        console.log("L49 Home this.props.books = ", this.props.books);
+        // console.log("L49 Home this.props.books = ", this.props.books);
         
         const {books} = this.props
 
