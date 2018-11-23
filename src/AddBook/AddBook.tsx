@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, Col, ControlLabel, Form, FormControl, FormGroup, InputGroup } from 'react-bootstrap';
+import { Button, Col, ControlLabel, Form, FormControl, FormGroup, InputGroup, Panel, Row } from 'react-bootstrap';
 import * as _bookService from '../Services/BookService';
 import './AddBook.css';
 
@@ -17,18 +17,6 @@ class AddBook extends React.Component<any, any> {
             uploadFileList: fileList.target.files
         })
     }// handleFileUpload()
-
-/**
- * curl -X POST "https://bookstakapi.azurewebsites.net/api/Books/upload" -H  "accept: application/json" -H  "Content-Type: multipart/form-data" 
- * -F "Title=Title" 
- * -F "Author=Author" 
- * -F "YearPublished=2001" 
- * -F "ISBN=123456789" 
- * -F "BookReview=Awesome bookReview" 
- * -F "BookRating=5" 
- * -F "tags=science, web" 
- * -F "Image=@HTML CSS.jpg;type=image/jpeg"
- */
 
     public handleFormSubmit = (event: any) => {
         event.preventDefault()
@@ -80,9 +68,8 @@ class AddBook extends React.Component<any, any> {
 				// Rise an error
 				alert(response.statusText)
 			}else{
-                // location.reload()
-                
-                // location.replace("/Details/" + response.id)
+                // Redirect to Home Page.
+                location.replace("/")
 			}
 		})
         // then redirect to /Details/:bookId
@@ -90,7 +77,14 @@ class AddBook extends React.Component<any, any> {
 
     public render() {
         return(
-            <div>
+            <Panel>
+                <Panel.Heading>
+                    <Row>
+                        <Col xs={10} sm={9} md={9} lg={10}>
+                            <Panel.Title className="bookDetailsItem-Title" componentClass="h2">ADD BOOK</Panel.Title>
+                        </Col>
+                    </Row>
+                </Panel.Heading>
                 <Form horizontal={true} onSubmit={this.handleFormSubmit}>
                     <FormGroup controlId="formHorizontalTitle" >
                         <Col componentClass={ControlLabel} sm={2}>
@@ -171,7 +165,7 @@ class AddBook extends React.Component<any, any> {
                         </Col>
                     </FormGroup>
                 </Form>
-            </div>
+            </Panel>
         ); // return()
     } // render()
 }// class
