@@ -76,7 +76,6 @@ class EditBook extends React.Component<any, any> {
         const { book } = this.state
 
         event.preventDefault()
-        // console.log("L36 Form Event", event.target);
         const titleInput = document.getElementById("formHorizontalTitle") as HTMLInputElement
         const authorInput = document.getElementById("formHorizontalAuthor") as HTMLInputElement
         const yearPublishedInput = document.getElementById("formHorizontalYear") as HTMLInputElement
@@ -122,7 +121,6 @@ class EditBook extends React.Component<any, any> {
 
         _bookService.editBook(editedBook)
         .then((response: any) => {
-            console.log("L80 AddBook Responce = ", response);
             if(!response.ok){
                 // Rise an error
                 alert(response.statusText)
@@ -136,7 +134,6 @@ class EditBook extends React.Component<any, any> {
     public render() {
 
         const { book } = this.state
-        console.log("L134 EditBook.render = ", book);
         
         if(book){
             return(

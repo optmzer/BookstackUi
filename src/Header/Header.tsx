@@ -28,9 +28,7 @@ class Header extends React.Component<any, any> {
 
     public render() {
 
-        const { books, searchQuery } = this.state
-        console.log("26 Header. render this.state.books = ", books);
-        // console.log("27 Header. render this.state.value = ", searchQuery);
+        const { searchQuery } = this.state
         
         return(
         <Navbar inverse={true} collapseOnSelect={false}  >
@@ -81,13 +79,13 @@ class Header extends React.Component<any, any> {
                         </InputGroup>
                     </FormGroup>
                 </Navbar.Form>
-                <Nav pullRight={true}>
-                    <NavItem className="header-controls headerIcon headerIcon-github" eventKey={50} href="https://github.com/optmzer" target="_blank">
-                        <SocialIcon style={{height: 32, width: 32}} round={true} url="https://github.com/optmzer" />
-                    </NavItem>
-                    <NavItem className="header-controls headerIcon headerIcon-twitter" eventKey={60} href="https://www.linkedin.com/in/alexander-frolov-324051148/" target="_blank">
-                        <SocialIcon style={{height: 32, width: 32}} round={true} url="https://www.linkedin.com/in/alexander-frolov-324051148/" />
-                    </NavItem>
+                <Nav pullRight={true} className="social-right">
+                    <li role="presentation" className="header-controls headerIcon headerIcon-github">
+                        <SocialIcon style={{height: 32, width: 32}} url="https://github.com/optmzer" />
+                    </li>
+                    <li role="presentation" className="header-controls headerIcon headerIcon-twitter">
+                        <SocialIcon style={{height: 32, width: 32}} url="https://www.linkedin.com/in/alexander-frolov-324051148/" />
+                    </li>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

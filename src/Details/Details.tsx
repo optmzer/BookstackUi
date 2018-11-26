@@ -37,7 +37,6 @@ class Details extends React.Component<any, any> {
         const {book} = this.state
         
         const shareUrl = _bookService.BOOKS_UI_URI + bookUrl
-        console.log("L40 Details this.props = ", shareUrl);
 
         if(book){
             return(
@@ -63,7 +62,7 @@ class Details extends React.Component<any, any> {
                         </Row>
                         <Row>
                             <Col sm={12}>
-                                <Panel.Title className="bookDetailsItem-Title" componentClass="h6"><b><i>Share this book with a friend</i></b></Panel.Title>
+                                <Panel.Title className="bookDetailsItem-Title" componentClass="h6"><b><i>Share this book</i></b></Panel.Title>
                             </Col>
                         </Row>
                         <Row className="social-media-share-buttons button">

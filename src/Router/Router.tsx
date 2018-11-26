@@ -17,24 +17,25 @@ class Router extends React.Component<any, any>{
             error_msg: "",
             searchQuery: ""
         }
-        this.getAllBooks()
+        // this.getAllBooks()
+    }
+    
+    public componentDidMount() {
+        this.handleSearch(this.state.searchQuery)
     }
 
     public handleSearch = (searchQuery: string) => {
 
-        console.log("L25 Router searchQuery = ", searchQuery);
         if(!searchQuery){
-            console.log("L28 Router searchQuery = 0 getAllBooks ", searchQuery);
             this.getAllBooks()
         } else {
             _bookService.getBookByTitle(searchQuery)
             .then(
                 (res) => {
-                
-                this.setState({
-                    books: res
-                });
-                // location.replace("/")
+                    this.setState({
+                        books: res
+                    });
+                    location.replace("/")
               })
               .catch(
                 (err) => {
@@ -54,18 +55,18 @@ class Router extends React.Component<any, any>{
             this.setState({
                 books: res
             });
-          })
-          .catch(
+            })
+        .catch(
             (err) => {
-              this.setState({
+                this.setState({
                 error_msg: err.message,
-              });
+                });
             },
-          );
+        );
     }
 
     public render(){
-        console.log("L49 Router this.state.books", this.state.books);
+        console.log("L66 Router location", location);
         
         return (
             <div id="router">
